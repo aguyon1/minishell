@@ -6,14 +6,14 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 15:44:41 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/05 16:35:02 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/11 22:36:15 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NTREE_H
 # define NTREE_H
 
-# include "../libft/libft.h"
+# include "../libft/inc/libft.h"
 # include "../llist/llist.h"
 # include "stdbool.h"
 # include <string.h>

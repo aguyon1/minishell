@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:58:59 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/29 12:22:14 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/11 22:36:00 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <readline/readline.h>
 # include <assert.h>
 # include <readline/history.h>
-# include "../libft/libft.h"
+# include "../libft/inc/libft.h"
 # include "../llist/llist.h"
 # include "../ntree/ntree.h"
 
