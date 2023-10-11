@@ -144,10 +144,11 @@ NAME		=	minishell
 LIBFT		=	./libft/libft.a
 LLST		=	./llist/libllst.a
 NTREE		=	./ntree/libntree.a
+XALLOC		=	./xalloc/liballoc.a
 
 CC			=	cc
 CFLAGS		=	-Wall -Wextra -Werror
-LDFLAGS		=	-L./libft -lft -L./llist -lllst -L./ntree -lntree -lreadline
+LDFLAGS		=	-L./libft -lft -L./llist -lllst -L./ntree -lntree -L./xalloc -lalloc -lreadline
 
 ###		RULES		###
 all:		${NAME}
@@ -159,7 +160,7 @@ $(BUILD_DIR)/%.o: %.c
 	@echo "\033[0m\c"
 
 
-${NAME}:	${HEADER} ${OBJS} ${LIBFT} ${LLST} ${NTREE}
+${NAME}:	${HEADER} ${OBJS} ${LIBFT} ${LLST} ${NTREE} $(XALLOC)
 			@echo "\033[32m\c"
 			${CC} -o ${NAME} ${OBJS} ${LDFLAGS}
 			@echo "Link complete for exec --> \033[4;36;1m${NAME}\033[0m"
@@ -172,12 +173,17 @@ ${LIBFT}:
 ${LLST}:
 			@echo "\033[33mllst compilation ...\033[0m"
 			@make --no-print-directory -C llist/
-			@echo "\033[33mllst.a compiled\033[0m"
+			@echo "\033[33mlibllst.a compiled\033[0m"
 
 ${NTREE}:
 			@echo "\033[33mntree compilation ...\033[0m"
 			@make --no-print-directory -C ntree/
-			@echo "\033[33mntree.a compiled\033[0m"
+			@echo "\033[33mlibntree.a compiled\033[0m"
+
+$(XALLOC):
+			@echo "\033[33mxalloc compilation ...\033[0m"
+			@make --no-print-directory -C xalloc/
+			@echo "\033[33mliballoc.a compiled\033[0m"
 
 clean:
 			@rm -rf $(BUILD_DIR)
@@ -185,6 +191,7 @@ clean:
 			@make --no-print-directory clean -C libft/
 			@make --no-print-directory clean -C llist/
 			@make --no-print-directory clean -C ntree/
+			@make --no-print-directory clean -C xalloc/
 
 
 fclean:		clean
@@ -193,6 +200,7 @@ fclean:		clean
 			@make --no-print-directory fclean -C libft/
 			@make --no-print-directory fclean -C llist/
 			@make --no-print-directory fclean -C ntree/
+			@make --no-print-directory fclean -C xalloc/
 
 re:			fclean all
 
