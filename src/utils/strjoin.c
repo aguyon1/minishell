@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 18:00:17 by bguillau          #+#    #+#             */
-/*   Updated: 2023/10/13 17:31:49 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:37:53 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,11 @@ char	*str_one_char_join(char *str, char c)
 	{
 		str_len = 0;
 		str = xmalloc(2 * sizeof(char));
-		if (!str)
-			return (NULL);
 	}
 	else
 	{
 		str_len = ft_strlen(str);
 		str = ft_realloc(str, (str_len + 1 + 1) * sizeof(char));
-		if (!str)
-			return (NULL);
 	}
 	str[str_len + 1] = '\0';
 	str[str_len] = c;

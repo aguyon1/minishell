@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 15:00:12 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/24 15:47:08 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:40:37 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ static t_ntree	*create_cmd_arg(t_llist *leaf_node)
 	t_llist			*new_leaf;
 
 	new_leaf_content = leaf_new(token);
-	if (new_leaf_content == NULL)
-		return (NULL);
 	new_leaf = llstnew(new_leaf_content);
-	if (new_leaf == NULL)
-		return (ast_free(new_leaf_content), NULL);
 	return (ast_new(CMD_ARG, NULL, new_leaf));
 }
 

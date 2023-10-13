@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 14:40:26 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/13 17:34:04 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:41:19 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	create_tmp_file(char *pathname, t_minishell *minishell)
 	if (fd < 0)
 		return (perror("open here_doc in w"), BAD_FD);
 	new_node = llstnew(pathname);
-	if (new_node == NULL)
-		return (xclose(fd), free(pathname), ALLOC_FAIL);
 	llstadd_back(&minishell->here_doc_files, new_node);
 	return (fd);
 }

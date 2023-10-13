@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:05:58 by bguillau          #+#    #+#             */
-/*   Updated: 2023/10/13 17:31:05 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:37:30 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ static char	**get_new_matrix_malloced(char **src_matrix, int offset)
 {
 	int		i;
 	int		len;
-	char	**new_matrix;
 
 	len = 0;
 	i = -1;
 	while (src_matrix && src_matrix[++i])
 		len += 1;
-	new_matrix = xmalloc((len + 1 + offset) * sizeof(char *));
-	return (new_matrix);
+	return (xmalloc((len + 1 + offset) * sizeof(char *)));
 }
 
 char	**charmatrix_dup(char **src_matrix)

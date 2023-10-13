@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:10:21 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/13 13:38:05 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:40:16 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static t_ntree	*create_operator(t_llist *leaf_node)
 	if (new_leaf_content == NULL)
 		return (NULL);
 	new_leaf = llstnew(new_leaf_content);
-	if (new_leaf == NULL)
-		return (ast_free(new_leaf_content), NULL);
 	return (ast_new(OPERATOR, NULL, new_leaf));
 }
 
@@ -35,11 +33,7 @@ static t_ntree	*create_filename(t_llist *leaf_node)
 	char			*filename;
 
 	new_leaf_content = leaf_new(token);
-	if (new_leaf_content == NULL)
-		return (NULL);
 	new_leaf = llstnew(new_leaf_content);
-	if (new_leaf == NULL)
-		return (ast_free(new_leaf_content), NULL);
 	filename = xstrdup(token->data);
 	return (ast_new(FILENAME, filename, new_leaf));
 }

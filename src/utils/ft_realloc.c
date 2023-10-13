@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:06:17 by bguillau          #+#    #+#             */
-/*   Updated: 2023/10/13 17:28:11 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:37:37 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	*ft_realloc(void *ptr, size_t size)
 	if (!ptr)
 		return (xmalloc(size));
 	new = xmalloc(size);
-	if (!new)
-		return (NULL);
 	ft_memcpy(new, ptr, ft_strlen(ptr));
 	xfree(ptr);
 	return (new);

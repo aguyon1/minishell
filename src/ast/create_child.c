@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 15:08:06 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/07 15:55:37 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:40:00 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ t_ntree *(*create)(t_llist *, t_llist *))
 {
 	t_ntree *const	subtree = create(begin, end);
 
-	if (subtree == NULL)
-		return (NULL);
 	return (llstnew(subtree));
 }
 
@@ -26,7 +24,5 @@ t_llist	*create_child(t_llist *llist, t_ntree *(create)(t_llist *))
 {
 	t_ntree *const	subtree = create(llist);
 
-	if (subtree == NULL)
-		return (NULL);
 	return (llstnew(subtree));
 }

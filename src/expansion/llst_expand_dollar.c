@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 13:36:49 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/13 17:29:48 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:38:43 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ static t_llist	*get_expand_node(t_llist *node, char **envp, int status)
 	{
 		xfree(new_str);
 		new_str = xstrdup(str);
-		if (new_str == NULL)
-			return (NULL);
 		new_node = llst_token_new(ambiguous_word, new_str);
 	}
 	else

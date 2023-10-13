@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 14:08:11 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/03 11:22:15 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:41:08 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,7 @@ t_llist	*lsttok(const char *str)
 	while (*str)
 	{
 		token = _get_next_token(&str);
-		if (token == NULL)
-			return (llstclear(&llist, free), NULL);
 		new = llstnew(token);
-		if (new == NULL)
-			return (llstclear(&llist, free), NULL);
 		llstadd_back(&llist, new);
 	}
 	return (llist);

@@ -6,29 +6,13 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:36:08 by aguyon            #+#    #+#             */
-/*   Updated: 2023/10/13 17:25:14 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 19:42:25 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ntree.h"
 
 t_ntree	*ntree_dup(t_ntree *ntree, void *(*dup)(void *), void (*del)(void *));
-
-static void	free_new_children(t_llist **children, void (*del)(void *))
-{
-	t_llist	*current;
-	t_llist	*next;
-
-	current = *children;
-	while (current != NULL)
-	{
-		next = current->next;
-		ntree_free((t_ntree **)&(current->content), del);
-		xfree(current);
-		current = next;
-	}
-	*children = NULL;
-}
 
 static t_llist	*children_dup(t_llist *children, void *(*dup)(void *),
 	void (*del)(void *))
@@ -43,12 +27,7 @@ static t_llist	*children_dup(t_llist *children, void *(*dup)(void *),
 	while (current != NULL)
 	{
 		new_ntree = ntree_dup(current->content, dup, del);
-		if (new_ntree == NULL)
-			return (free_new_children(&new_children, del), NULL);
 		new_node = llstnew(new_ntree);
-		if (new_node == NULL)
-			return (free_new_children(&new_children, del),
-				ntree_free(&new_ntree, del), NULL);
 		llstadd_back(&new_children, new_node);
 		current = current->next;
 	}
