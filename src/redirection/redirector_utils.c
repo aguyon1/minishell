@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 16:26:00 by aguyon            #+#    #+#             */
-/*   Updated: 2023/07/31 16:28:55 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:33:37 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	open_redirections(t_type type, const char *filename)
 	int	fd;
 
 	if (type == great)
-		fd = open(filename, O_TRUNC | O_WRONLY | O_CREAT, 00644);
+		fd = xopen_mode(filename, O_TRUNC | O_WRONLY | O_CREAT, 00644);
 	else if (type == dgreat)
-		fd = open(filename, O_APPEND | O_WRONLY | O_CREAT, 00644);
+		fd = xopen_mode(filename, O_APPEND | O_WRONLY | O_CREAT, 00644);
 	else if (type == less)
-		fd = open(filename, O_RDONLY);
+		fd = xopen(filename, O_RDONLY);
 	else
 		return (-1);
 	if (fd < 0)

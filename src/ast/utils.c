@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 14:01:54 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/25 13:01:35 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:29:01 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ t_token	*get_token(t_ntree *ast)
 
 t_ntree	*leaf_new(const t_token *token)
 {
-	char *const	new_data = ft_strdup(token->data);
+	char *const	new_data = xstrdup(token->data);
 
-	if (new_data == NULL)
-		return (NULL);
 	return (ast_new(token->type, new_data, NULL));
 }

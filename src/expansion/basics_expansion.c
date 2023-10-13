@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:06:40 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/20 21:37:34 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:29:40 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ char	*get_key_2(char *line)
 	char	*end;
 	char	*ret;
 
-	ret = ft_strdup(line);
-	if (!ret)
-		return (NULL);
+	ret = xstrdup(line);
 	end = strfind(ret, '=');
 	if (end)
 		*end = '\0';
@@ -51,9 +49,7 @@ char	*extract_wd(char *start, char *end)
 	int		len;
 
 	len = end - start;
-	word = malloc(len + 1);
-	if (!word)
-		return (NULL);
+	word = xmalloc(len + 1);
 	word[len--] = '\0';
 	while (--end >= start)
 		word[len--] = *end;
@@ -73,9 +69,9 @@ char	*expand_wd(char *word, char **envp)
 		if (!key_comp)
 			return (NULL);
 		if (!ft_strcmp(word, key_comp))
-			return (free(key_comp), ft_strdup(get_value(*envp)));
+			return (xfree(key_comp), xstrdup(get_value(*envp)));
 		envp++;
-		free(key_comp);
+		xfree(key_comp);
 	}
-	return (ft_strdup(""));
+	return (xstrdup(""));
 }

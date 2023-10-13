@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strjoin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguillau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 18:00:17 by bguillau          #+#    #+#             */
-/*   Updated: 2023/06/16 18:00:20 by bguillau         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:31:49 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*strjoin(const char *s1, const char *s2)
 	char	*ret;
 
 	if (!s1 || !s2)
-		return (free((void *)s1), NULL);
-	ret = ft_strjoin(s1, s2);
-	free((void *)s1);
+		return (xfree((void *)s1), NULL);
+	ret = xstrjoin(s1, s2);
+	xfree((void *)s1);
 	return (ret);
 }
 
@@ -31,10 +31,10 @@ char	*strjoin2(const char *s1, const char *s2)
 	char	*ret;
 
 	if (!s1 || !s2)
-		return (free((void *)s1), free((void *)s2), NULL);
-	ret = ft_strjoin(s1, s2);
-	free((void *)s1);
-	free((void *)s2);
+		return (xfree((void *)s1), xfree((void *)s2), NULL);
+	ret = xstrjoin(s1, s2);
+	xfree((void *)s1);
+	xfree((void *)s2);
 	return (ret);
 }
 
@@ -45,11 +45,11 @@ char	*ft_strjoin3(char const *s1, char const *s2, char const *s3)
 	char	*ret;
 
 	if (!s1 || !s2 || !s3)
-		return (free((void *)s2), NULL);
-	tmp = ft_strjoin(s1, s2);
-	ret = ft_strjoin(tmp, s3);
-	free((void *)s2);
-	return (free((void *)tmp), ret);
+		return (xfree((void *)s2), NULL);
+	tmp = xstrjoin(s1, s2);
+	ret = xstrjoin(tmp, s3);
+	xfree((void *)s2);
+	return (xfree((void *)tmp), ret);
 }
 
 /*	join 3 strings, free third only	*/
@@ -59,11 +59,11 @@ char	*strjoin3(char const *s1, char const *s2, char const *s3)
 	char	*ret;
 
 	if (!s1 || !s2 || !s3)
-		return (free((void *)s3), NULL);
-	tmp = ft_strjoin(s1, s2);
-	ret = ft_strjoin(tmp, s3);
-	free((void *)s3);
-	return (free((void *)tmp), ret);
+		return (xfree((void *)s3), NULL);
+	tmp = xstrjoin(s1, s2);
+	ret = xstrjoin(tmp, s3);
+	xfree((void *)s3);
+	return (xfree((void *)tmp), ret);
 }
 
 char	*str_one_char_join(char *str, char c)
@@ -73,7 +73,7 @@ char	*str_one_char_join(char *str, char c)
 	if (!str)
 	{
 		str_len = 0;
-		str = malloc(2 * sizeof(char));
+		str = xmalloc(2 * sizeof(char));
 		if (!str)
 			return (NULL);
 	}

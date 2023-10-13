@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:44:48 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/28 17:27:56 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:21:53 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,30 +19,30 @@ int	dupper(t_info *info, int prevpipe, int pipefd[2])
 	old_fd = prevpipe;
 	if (info->cmds->fd_in > NO_REDIR)
 	{
-		close(prevpipe);
+		xclose(prevpipe);
 		old_fd = info->cmds->fd_in;
 	}
 	if (info->cmds->fd_in >= NO_REDIR && dup2(old_fd, STDIN) < 0)
 		return (perror(ERR_DUP_IN), BAD_FD);
-	close(old_fd);
+	xclose(old_fd);
 	if (!info->cmds->next && info->cmds->fd_out == NO_REDIR)
-		return (close(pipefd[1]), 0);
+		return (xclose(pipefd[1]), 0);
 	old_fd = pipefd[1];
 	if (info->cmds->fd_out > NO_REDIR)
 	{
-		close(pipefd[1]);
+		xclose(pipefd[1]);
 		old_fd = info->cmds->fd_out;
 	}
 	if (info->cmds->fd_out >= NO_REDIR && dup2(old_fd, STDOUT) < 0)
 		return (perror(ERR_DUP_OUT), BAD_FD);
-	close(old_fd);
+	xclose(old_fd);
 	return (0);
 }
 
 void	in_child(t_info *info, int pipefd[2], int *prevpipe, \
 t_minishell *minishell)
 {
-	close(pipefd[0]);
+	xclose(pipefd[0]);
 	if (dupper(info, *prevpipe, pipefd) == BAD_FD)
 		exit(EXIT_FAILURE);
 	close_cmd_redirfiles(info->cmds);
@@ -53,11 +53,11 @@ void	in_parent(t_info *info, int pipefd[2], int *prevpipe, int pid)
 {
 	if (!info->cmds->next)
 	{
-		close(pipefd[0]);
+		xclose(pipefd[0]);
 		info->last_pid = pid;
 	}
-	close(pipefd[1]);
-	close(*prevpipe);
+	xclose(pipefd[1]);
+	xclose(*prevpipe);
 	*prevpipe = pipefd[0];
 	close_cmd_redirfiles(info->cmds);
 }

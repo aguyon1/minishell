@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:05:58 by bguillau          #+#    #+#             */
-/*   Updated: 2023/10/13 13:30:21 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:31:05 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	free_char_matrix(char **strs)
 
 	i = 0;
 	while (strs[i])
-		free(strs[i++]);
+		xfree(strs[i++]);
 }
 
 static char	**get_new_matrix_malloced(char **src_matrix, int offset)
@@ -31,7 +31,7 @@ static char	**get_new_matrix_malloced(char **src_matrix, int offset)
 	i = -1;
 	while (src_matrix && src_matrix[++i])
 		len += 1;
-	new_matrix = malloc((len + 1 + offset) * sizeof(char *));
+	new_matrix = xmalloc((len + 1 + offset) * sizeof(char *));
 	return (new_matrix);
 }
 
@@ -46,7 +46,7 @@ char	**charmatrix_dup(char **src_matrix)
 	i = -1;
 	while (src_matrix && src_matrix[++i])
 	{
-		new_matrix[i] = ft_strdup(src_matrix[i]);
+		new_matrix[i] = xstrdup(src_matrix[i]);
 		if (!new_matrix[i])
 			return (free_char_matrix(new_matrix), NULL);
 	}
@@ -65,7 +65,7 @@ char	**charmatrix_add_one(char **src_matrix, char *entry)
 	i = -1;
 	while (src_matrix && src_matrix[++i])
 	{
-		new_matrix[i] = ft_strdup(src_matrix[i]);
+		new_matrix[i] = xstrdup(src_matrix[i]);
 		if (!new_matrix[i])
 			return (free_char_matrix(new_matrix), NULL);
 	}
@@ -90,18 +90,18 @@ char	**charmatrix_del_one(char **src_matrix, char *key)
 	j = -1;
 	while (src_matrix && src_matrix[++i])
 	{
-		free(key_comp);
+		xfree(key_comp);
 		key_comp = get_key_2(src_matrix[i]);
 		if (!key_comp)
 			return (NULL);
 		if (!ft_strcmp(key, key_comp))
 			continue ;
-		new_matrix[++j] = ft_strdup(src_matrix[i]);
+		new_matrix[++j] = xstrdup(src_matrix[i]);
 		if (!new_matrix[j])
 			return (free_char_matrix(new_matrix), NULL);
 	}
 	new_matrix[++j] = NULL;
-	return (free(key_comp), free_char_matrix(src_matrix), new_matrix);
+	return (xfree(key_comp), free_char_matrix(src_matrix), new_matrix);
 }
 
 char	**charmatrix_buble_sort(char **src_matrix)

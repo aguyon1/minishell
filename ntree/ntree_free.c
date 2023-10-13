@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:22:19 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/05 13:45:47 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:25:23 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	ntree_free(t_ntree **ntree, t_del_fun del)
 	{
 		next = current->next;
 		ntree_free((t_ntree **)&(current->content), del);
-		free(current);
+		xfree(current);
 		current = next;
 	}
-	free(current_node);
+	xfree(current_node);
 	*ntree = NULL;
 }

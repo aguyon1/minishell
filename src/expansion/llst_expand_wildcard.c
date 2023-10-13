@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 18:35:20 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/25 12:15:38 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:29:56 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static int	add_filename(t_llist **wildcard_list, char *filename)
 	t_token	*new_token;
 	t_llist	*new_node;
 
-	new_filename = ft_strdup(filename);
+	new_filename = xstrdup(filename);
 	if (new_filename == NULL)
 		return (ALLOC_FAIL);
 	new_token = token_new(word, new_filename);
 	if (new_token == NULL)
-		return (free(new_filename), ALLOC_FAIL);
+		return (xfree(new_filename), ALLOC_FAIL);
 	new_node = llstnew(new_token);
 	if (new_node == NULL)
 		return (token_free(new_token), ALLOC_FAIL);

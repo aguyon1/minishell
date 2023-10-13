@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:31:23 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/29 12:31:51 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:21:27 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ast_close_fd(t_ntree *ast)
 		fd = (intptr_t)token->data;
 		if (fd > 0)
 		{
-			close(fd);
+			xclose(fd);
 			token->data = (void *)-1;
 		}
 	}
@@ -53,7 +53,7 @@ static void	redir_close_unused_fd(t_ntree *node, bool *infile_find,
 	{
 		if (*infile_find && fd > 0)
 		{
-			close(fd);
+			xclose(fd);
 			token->data = (void *)-1;
 		}
 		*infile_find |= true;
@@ -62,7 +62,7 @@ static void	redir_close_unused_fd(t_ntree *node, bool *infile_find,
 	{
 		if (*outfile_find && fd > 0)
 		{
-			close(fd);
+			xclose(fd);
 			token->data = (void *)-1;
 		}
 		*outfile_find |= true;

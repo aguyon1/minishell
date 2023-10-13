@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_envar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguillau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/11 15:12:42 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/11 15:12:44 by bguillau         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:31:25 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	add_envar(char *key, char *value, char ***envp)
 
 	if (ft_strchr(key, '+'))
 		key[ft_strlen(key) - 1] = '\0';
-	env_line = ft_strjoin(key, "=");
+	env_line = xstrjoin(key, "=");
 	env_line = strjoin(env_line, value);
 	if (!env_line)
 		return (ALLOC_FAIL);
@@ -41,7 +41,7 @@ int	mod_envar(char *key, char *new_value, char **envp)
 	char	*env_line;
 	char	*key_comp;
 
-	env_line = ft_strjoin(key, "=");
+	env_line = xstrjoin(key, "=");
 	env_line = strjoin(env_line, new_value);
 	if (!env_line)
 		return (ALLOC_FAIL);
@@ -52,11 +52,11 @@ int	mod_envar(char *key, char *new_value, char **envp)
 			return (ALLOC_FAIL);
 		if (!ft_strcmp(key, key_comp))
 		{
-			free(*envp);
+			xfree(*envp);
 			*envp = env_line;
-			return (free(key_comp), 1);
+			return (xfree(key_comp), 1);
 		}
-		free(key_comp);
+		xfree(key_comp);
 		envp++;
 	}
 	return (0);
@@ -77,10 +77,10 @@ int	concat_envar(char *key, char *new_value, char **envp)
 		{
 			*envp = strjoin(*envp, new_value);
 			if (!*envp)
-				return (free(key_comp), ALLOC_FAIL);
-			return (free(key_comp), 1);
+				return (xfree(key_comp), ALLOC_FAIL);
+			return (xfree(key_comp), 1);
 		}
-		free(key_comp);
+		xfree(key_comp);
 		envp++;
 	}
 	return (0);

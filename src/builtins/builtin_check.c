@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:36:03 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/11 16:11:02 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:21:32 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ int	redir_solo_builtin(t_cmd *cmd)
 {
 	if (cmd->fd_in > NO_REDIR && dup2(cmd->fd_in, STDIN) < 0)
 		return (perror(ERR_DUP_IN), BAD_FD);
-	close(cmd->fd_in);
+	xclose(cmd->fd_in);
 	if (cmd->fd_out > NO_REDIR && dup2(cmd->fd_out, STDOUT) < 0)
 		return (perror(ERR_DUP_OUT), BAD_FD);
-	close(cmd->fd_out);
+	xclose(cmd->fd_out);
 	return (1);
 }
 
@@ -83,8 +83,8 @@ int	exec_solo_builtin(t_cmd *cmd, t_minishell *minishell)
 	{
 		dup2(old_stdin, STDIN_FILENO);
 		dup2(old_stdout, STDOUT_FILENO);
-		close(old_stdin);
-		close(old_stdout);
+		xclose(old_stdin);
+		xclose(old_stdout);
 	}
 	return (minishell->status);
 }

@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:05:23 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/11 12:33:07 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:23:47 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_info	*get_pipex_info(t_minishell *minishell, t_ntree *pipeline_node)
 {
-	t_info *const	pipex_info = malloc(sizeof(t_info));
+	t_info *const	pipex_info = xmalloc(sizeof(t_info));
 	const size_t	nb_cmd = llstsize(pipeline_node->children);
 	t_llist			*current;
 	t_cmd			*new_cmd;

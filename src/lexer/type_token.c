@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 15:42:20 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/25 13:12:38 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:27:01 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ static t_type	get_type(const char *text)
 t_token	*str_to_token(char *str)
 {
 	const t_type	type = get_type(str);
-	t_token *const	new = malloc(sizeof(t_token));
-	char *const		new_data = ft_strdup(str);
+	t_token *const	new = xmalloc(sizeof(t_token));
+	char *const		new_data = xstrdup(str);
 
 	if (new == NULL)
-		return (free(new_data), NULL);
+		return (xfree(new_data), NULL);
 	if (new_data == NULL)
-		return (token_free(new), free(new_data), NULL);
+		return (token_free(new), xfree(new_data), NULL);
 	*new = (t_token){type, new_data};
 	return (new);
 }

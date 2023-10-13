@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:52:29 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/03 15:05:20 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:30:37 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*get_command_name(t_ntree *simple_command_node)
 	t_ntree *const	word_node = cmd_name_node->children->content;
 	char *const		cmd_name = get_token(word_node)->data;
 
-	return (ft_strdup(cmd_name));
+	return (xstrdup(cmd_name));
 }
 
 char	**get_command_args(t_ntree *simple_command_node, char *command_name)
@@ -63,11 +63,9 @@ char	**get_command_args(t_ntree *simple_command_node, char *command_name)
 	t_llist	*current;
 	int		i;
 
-	args = malloc((get_args_length(simple_command_node) + 2) * sizeof(char *));
-	if (args == NULL)
-		return (NULL);
+	args = xmalloc((get_args_length(simple_command_node) + 2) * sizeof(char *));
 	i = 0;
-	args[i] = ft_strdup(command_name);
+	args[i] = xstrdup(command_name);
 	if (args[i] == NULL)
 		return (free_char_matrix(args), NULL);
 	i++;
@@ -76,7 +74,7 @@ char	**get_command_args(t_ntree *simple_command_node, char *command_name)
 	{
 		if (get_token(current->content)->type == CMD_ARG)
 		{
-			args[i] = ft_strdup(get_arg_name(current->content));
+			args[i] = xstrdup(get_arg_name(current->content));
 			if (args[i] == NULL)
 				return (free_char_matrix(args), NULL);
 			i++;

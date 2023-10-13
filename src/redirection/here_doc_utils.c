@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 14:40:26 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/25 15:04:51 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:34:04 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	create_tmp_file(char *pathname, t_minishell *minishell)
 	t_llist	*new_node;
 	int		fd;
 
-	fd = open(pathname, O_TRUNC | O_WRONLY | O_CREAT, 00644);
+	fd = xopen_mode(pathname, O_TRUNC | O_WRONLY | O_CREAT, 00644);
 	if (fd < 0)
 		return (perror("open here_doc in w"), BAD_FD);
 	new_node = llstnew(pathname);
 	if (new_node == NULL)
-		return (close(fd), free(pathname), ALLOC_FAIL);
+		return (xclose(fd), free(pathname), ALLOC_FAIL);
 	llstadd_back(&minishell->here_doc_files, new_node);
 	return (fd);
 }
@@ -50,7 +50,7 @@ char	*expand_dollar_here_doc(char *str, char **envp, int status)
 	char	*next;
 	char	*temp;
 
-	res = ft_strdup("");
+	res = xstrdup("");
 	while (*str)
 	{
 		next = get_next(str);
@@ -61,7 +61,7 @@ char	*expand_dollar_here_doc(char *str, char **envp, int status)
 		if (temp == NULL)
 			return (NULL);
 		res = strjoin(res, temp);
-		free(temp);
+		xfree(temp);
 		if (res == NULL)
 			return (NULL);
 		str = next;

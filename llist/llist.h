@@ -6,13 +6,14 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:14:59 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/16 17:17:07 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:34:59 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LLIST_H
 # define LLIST_H
 
+# include "../libft/inc/libft.h"
 # include <stddef.h>
 # include <stdlib.h>
 # include <stdbool.h>

@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:46:45 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/25 11:59:37 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:21:38 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	check_cmd_access(t_info *info, t_minishell *minishell)
 void	close_cmd_redirfiles(t_cmd *cmd)
 {
 	if (cmd->fd_in > 2)
-		close(cmd->fd_in);
+		xclose(cmd->fd_in);
 	if (cmd->fd_out > 2)
-		close(cmd->fd_out);
+		xclose(cmd->fd_out);
 }
 
 void	execute(char **cmd_args, t_info *info, t_minishell *minishell)
@@ -100,8 +100,8 @@ void	execute(char **cmd_args, t_info *info, t_minishell *minishell)
 	execve(info->cmds->fullname, cmd_args, minishell->envp);
 	perror(ERR_EXECVE);
 	if (info->cmds->fd_in > NO_REDIR)
-		close(info->cmds->fd_in);
+		xclose(info->cmds->fd_in);
 	if (info->cmds->fd_out > NO_REDIR)
-		close(info->cmds->fd_out);
+		xclose(info->cmds->fd_out);
 	return (minishell->status = 1, free_and_exit_child(minishell));
 }

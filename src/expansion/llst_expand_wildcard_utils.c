@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 15:48:22 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/24 16:41:33 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:33:16 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ t_llist	*node_dup(t_llist *node)
 	t_token			*new_token;
 	char			*new_str;
 
-	new_str = ft_strdup(original_token->data);
+	new_str = xstrdup(original_token->data);
 	if (new_str == NULL)
 		return (NULL);
 	new_token = token_new(original_token->type, new_str);
 	if (new_token == NULL)
-		return (free(new_str), NULL);
+		return (xfree(new_str), NULL);
 	new_node = llstnew(new_token);
 	if (new_node == NULL)
 		return (token_free(new_token), NULL);
@@ -57,7 +57,7 @@ t_llist	*node_dup(t_llist *node)
 
 t_llist	*ambigous_node_new(t_llist *node)
 {
-	char *const	new_str = ft_strdup(llst_token_get_data(node));
+	char *const	new_str = xstrdup(llst_token_get_data(node));
 
 	if (new_str == NULL)
 		return (NULL);

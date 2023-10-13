@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguillau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:06:17 by bguillau          #+#    #+#             */
-/*   Updated: 2023/06/22 19:06:19 by bguillau         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:28:11 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	*ft_realloc(void *ptr, size_t size)
 	char	*new;
 
 	if (!ptr)
-		return (malloc(size));
-	new = malloc(size);
+		return (xmalloc(size));
+	new = xmalloc(size);
 	if (!new)
 		return (NULL);
 	ft_memcpy(new, ptr, ft_strlen(ptr));
-	free(ptr);
+	xfree(ptr);
 	return (new);
 }

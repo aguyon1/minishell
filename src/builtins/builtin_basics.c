@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:08:34 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/01 17:37:49 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:29:10 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ char	*get_envalue(char *key, char **envp)
 		if (!key_comp)
 			return (NULL);
 		if (!ft_strcmp(key, key_comp))
-			return (free(key_comp), ft_strdup(get_value(*envp)));
-		free(key_comp);
+			return (xfree(key_comp), xstrdup(get_value(*envp)));
+		xfree(key_comp);
 		envp++;
 	}
-	return (ft_strdup(""));
+	return (xstrdup(""));
 }
 
 int	is_var_set(char *key, char **envp)
@@ -41,8 +41,8 @@ int	is_var_set(char *key, char **envp)
 		if (!key_comp)
 			return (ALLOC_FAIL);
 		if (!ft_strcmp(key, key_comp))
-			return (free(key_comp), 1);
-		free(key_comp);
+			return (xfree(key_comp), 1);
+		xfree(key_comp);
 		envp++;
 	}
 	return (0);

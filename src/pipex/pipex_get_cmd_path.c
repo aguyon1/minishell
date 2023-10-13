@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:43:42 by bguillau          #+#    #+#             */
-/*   Updated: 2023/10/13 13:31:05 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:32:04 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ char	**get_path(char **envp)
 	while (envp && *envp)
 	{
 		if (!ft_strncmp("PATH=", *envp, 5))
-			return (ft_split(get_value(*envp), ":"));
+			return (xsplit(get_value(*envp), ":"));
 		envp++;
 	}
-	no_path = malloc(2 * sizeof(char *));
-	if (!no_path)
-		return (NULL);
-	no_path[0] = ft_strdup("");
+	no_path = xmalloc(2 * sizeof(char *));
+	no_path[0] = xstrdup("");
 	no_path[1] = NULL;
 	return (no_path);
 }
@@ -37,24 +35,24 @@ char	*get_full_cmd_name(char *cmd_name, char **envp)
 	char	*tmp_name;
 
 	if (*cmd_name == '\0')
-		return (ft_strdup(""));
+		return (xstrdup(""));
 	if (ft_strchr(cmd_name, '/'))
-		return (ft_strdup(cmd_name));
+		return (xstrdup(cmd_name));
 	path = get_path(envp);
 	if (!path)
 		return (NULL);
 	if (!ft_strlen(path[0]) && !path[1])
-		return (free(path[0]), free(path), ft_strdup(""));
+		return (xfree(path[0]), xfree(path), xstrdup(""));
 	i = -1;
 	while (path[++i])
 	{
-		tmp_name = ft_strjoin(path[i], "/");
+		tmp_name = xstrjoin(path[i], "/");
 		tmp_name = strjoin(tmp_name, cmd_name);
 		if (!tmp_name)
 			return (free_char_matrix(path), NULL);
 		if (!access(tmp_name, F_OK))
 			return (free_char_matrix(path), tmp_name);
-		free(tmp_name);
+		xfree(tmp_name);
 	}
-	return (free_char_matrix(path), ft_strdup(""));
+	return (free_char_matrix(path), xstrdup(""));
 }

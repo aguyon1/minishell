@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:06:59 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/25 14:42:36 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:22:56 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ char	*remove_quote(char *str)
 	bool	is_inside_simple_quote;
 	bool	is_inside_double_quote;
 
-	new_str = malloc(ft_strlen(str) + 1);
-	if (new_str == NULL)
-		return (NULL);
+	new_str = xmalloc(ft_strlen(str) + 1);
 	is_inside_simple_quote = false;
 	is_inside_double_quote = false;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 14:43:43 by bguillau          #+#    #+#             */
-/*   Updated: 2023/10/13 13:17:00 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:26:31 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ int	pwd(char **args)
 	if (!str)
 		return (BUILTIN_ERR_CODE);
 	ft_printf("%s\n", str);
-	free(str);
+	xfree(str);
 	return (0);
 }

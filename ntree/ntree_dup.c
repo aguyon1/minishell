@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 14:36:08 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/16 17:15:40 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 17:25:14 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	free_new_children(t_llist **children, void (*del)(void *))
 	{
 		next = current->next;
 		ntree_free((t_ntree **)&(current->content), del);
-		free(current);
+		xfree(current);
 		current = next;
 	}
 	*children = NULL;
