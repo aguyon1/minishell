@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 17:06:36 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/24 15:47:27 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:38:23 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ static t_ntree	*create_here_end(t_llist *leaf_node)
 	new_leaf = llstnew(new_leaf_content);
 	if (new_leaf == NULL)
 		return (ast_free(new_leaf_content), NULL);
-	here_end = ft_strdup(token->data);
-	if (here_end == NULL)
-		return (llstclear(&new_leaf, ast_free), NULL);
+	here_end = xstrdup(token->data);
 	return (ast_new(HERE_END, here_end, new_leaf));
 }
 

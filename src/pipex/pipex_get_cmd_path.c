@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 14:43:42 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/21 20:48:15 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:31:05 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**get_path(char **envp)
 	while (envp && *envp)
 	{
 		if (!ft_strncmp("PATH=", *envp, 5))
-			return (ft_split(get_value(*envp), ':'));
+			return (ft_split(get_value(*envp), ":"));
 		envp++;
 	}
 	no_path = malloc(2 * sizeof(char *));

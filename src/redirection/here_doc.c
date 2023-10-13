@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 14:19:21 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/29 13:01:03 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:31:57 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	read_here_doc(char **data, const char *lim)
 			return (free(lim_without_quote), free(*data), ERRSIGINT);
 		if (!line || !ft_strcmp(line, lim_without_quote))
 			break ;
-		*data = strj(*data, strj(line, ft_strdup("\n")));
+		*data = xstrjoin(*data, xstrjoin(line, ft_strdup("\n")));
 		if (*data == NULL)
 			return (free(lim_without_quote), ERRALLOC);
 	}

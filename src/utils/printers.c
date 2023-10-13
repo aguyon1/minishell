@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 15:10:02 by bguillau          #+#    #+#             */
-/*   Updated: 2023/08/10 13:46:14 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:17:46 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	print_llist(t_llist *start)
 {
 	if (!start)
 		return ;
-	ft_fprintf(1, "------------------\n");
+	ft_printf("------------------\n");
 	llstiter(start, &print_item);
-	ft_fprintf(1, "------------------\n");
+	ft_printf("------------------\n");
 }
 
 void	print_syntax_error(const char *str)
 {
-	ft_fprintf(2, "%s`%s\'\n", ERR_SYNTAX, str);
+	ft_dprintf(2, "%s`%s\'\n", ERR_SYNTAX, str);
 }
 
 void	print_signal(int signum)

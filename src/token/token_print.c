@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 17:16:57 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/25 13:01:45 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:17:06 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ static const char	*g_type[]
 
 void	token_print(t_token *token)
 {
-	ft_fprintf(1, "text : %s, type : %s\n", token->data, g_type[token->type]);
+	ft_printf("text : %s, type : %s\n", token->data, g_type[token->type]);
 }

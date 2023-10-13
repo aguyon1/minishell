@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:58:59 by bguillau          #+#    #+#             */
-/*   Updated: 2023/10/11 22:36:00 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:30:39 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@
 # define ENV_USAGE "env: usage (minishell): env\n"
 # define EXPORT_USAGE "export: usage (minishell): export [name[=value] ...]\n"
 # define UNSET_USAGE "unset: usage (minishell): unset [name ...]\n"
+
+# define NOT_IMPLEMENTED(FUNCTION_NAME) exit(printf("%s : not implemented\n", FUNCTION_NAME) % 1)
 
 typedef enum e_type
 {
@@ -274,6 +276,7 @@ char	**charmatrix_dup(char **src_matrix);
 char	**charmatrix_add_one(char **src_matrix, char *entry);
 char	**charmatrix_del_one(char **src_matrix, char *key);
 char	**charmatrix_buble_sort(char **src_matrix);
+void	free_char_matrix(char **strs);
 int		ft_atoi_ll_novf(const char *nptr, long long int *nb);
 void	ft_bzero_matrix(char **matrix, size_t n);
 

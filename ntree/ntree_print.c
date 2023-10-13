@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 13:26:00 by aguyon            #+#    #+#             */
-/*   Updated: 2023/08/16 17:14:22 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/13 13:16:38 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 static void	print_node(t_ntree *ntree, int depth, void (*print)(void *))
 {
 	if (depth != 0)
-		ft_fprintf(1, "+--- ");
+		ft_printf("+--- ");
 	print(ntree->data);
-	ft_fprintf(1, "\n");
+	ft_printf("\n");
 }
 
 static void	print_tree_rec(t_ntree *ntree, bool flag[256], t_node_info info,
@@ -33,9 +33,9 @@ static void	print_tree_rec(t_ntree *ntree, bool flag[256], t_node_info info,
 	while (++i < info.depth)
 	{
 		if (flag[i] == true)
-			ft_fprintf(1, "|     ");
+			ft_printf("|     ");
 		else
-			ft_fprintf(1, "     ");
+			ft_printf("     ");
 	}
 	if (info.depth == 0 || !info.islast)
 		print_node(ntree, info.depth, print);

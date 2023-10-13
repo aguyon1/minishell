@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   charmatrix_dup.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguillau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:05:58 by bguillau          #+#    #+#             */
-/*   Updated: 2023/07/21 19:19:00 by bguillau         ###   ########.fr       */
+/*   Updated: 2023/10/13 13:30:21 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
+void	free_char_matrix(char **strs)
+{
+	register size_t	i;
+
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+}
 
 static char	**get_new_matrix_malloced(char **src_matrix, int offset)
 {
