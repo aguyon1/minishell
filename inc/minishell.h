@@ -6,7 +6,7 @@
 /*   By: aguyon <aguyon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 17:58:59 by bguillau          #+#    #+#             */
-/*   Updated: 2023/10/13 13:30:39 by aguyon           ###   ########.fr       */
+/*   Updated: 2023/10/14 11:15:16 by aguyon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # include <assert.h>
 # include <readline/history.h>
 # include "../libft/inc/libft.h"
-# include "../llist/llist.h"
-# include "../ntree/ntree.h"
 
 /*	numeric const	*/
 # define TRUE 1
